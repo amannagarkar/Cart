@@ -8,8 +8,8 @@ import android.widget.TextView;
 
 public class editcart extends AppCompatActivity {
 
-    TextView food_quantity;
-    Button addbtn , subbtn;
+   // TextView food_quantity;
+    //Button addbtn , subbtn;
 
 
     @Override
@@ -19,7 +19,7 @@ public class editcart extends AppCompatActivity {
 
 
 
-        int quantity;
+      /*  int quantity;
         food_quantity = findViewById(R.id.edit_quantity);
         addbtn = findViewById(R.id.add);
         subbtn= findViewById(R.id.subtract);
@@ -29,10 +29,10 @@ public class editcart extends AppCompatActivity {
             public void onClick(View v) {
                 String value = food_quantity.getText().toString();
 
-                int val = Integer.getInteger(value);
+              //  int val = Integer.getInteger(value);
 
             }
-        });
+        }); */
 
 
 

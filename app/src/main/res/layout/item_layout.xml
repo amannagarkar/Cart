@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/menu_text"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:background="?android:attr/selectableItemBackground"
-    android:clickable="true"
-    android:focusable="true"
     android:padding="15dp"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <view class="android.support.v7.app.AlertController$RecycleListView"
         android:layout_width="match_parent"
@@ -56,6 +52,14 @@
 
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/edit_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Qty : 1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="60dp"/>
 
     <TextView
         android:id="@+id/foodcost"

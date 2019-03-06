@@ -5,16 +5,18 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter<MenuCard>{
+public class CustomAdapter extends ArrayAdapter<MenuCard> {
 
     private ArrayList<MenuCard> menuCardsdata;
     Context mContext;
+    private AdapterView.OnItemClickListener onItemClickListener;
 
     // View lookup cache
     private static class ViewHolder {
@@ -65,8 +67,19 @@ public class CustomAdapter extends ArrayAdapter<MenuCard>{
         viewHolder.foodType.setText(menuCard.getFoodType());
         viewHolder.foodCost.setText(menuCard.getFoodCost());
 
+        viewHolder.foodName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         // Return the completed view to render on screen
         return convertView;
+    }
+
+    public void setOnItemClickListener(AdapterView.OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }
 
