@@ -1,24 +1,41 @@
 package com.example.cart;
 
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.MainThread;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.telecom.Call;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
 
-public class CartAdapter extends RecyclerView.Adapter {
+public class CartAdapter extends RecyclerView.Adapter implements NumberPicker.OnValueChangeListener{
     private ArrayList<MenuCard> menuCardsdata;
     Context context;
+    OnItemClickListener listener;
+    NumberPicker.OnValueChangeListener changeListener;
 
-    public CartAdapter(Context context, ArrayList<MenuCard> menuCardsdata) {
+    public interface OnItemClickListener {
+        void showNumberPicker(View v,int id,int qty);
+
+    }
+
+
+    public CartAdapter(Context context, ArrayList<MenuCard> menuCardsdata, OnItemClickListener listener) {
         this.context = context;
         this.menuCardsdata=menuCardsdata;
+        this.listener=listener;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,13 +49,14 @@ public class CartAdapter extends RecyclerView.Adapter {
 
 
 
-    public void onBindViewHolder(RecyclerView.ViewHolder holder_view, final int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder_view, final int position) {
         // set the data in items
         MyViewHolder holder=new MyViewHolder(holder_view.itemView);
         final MenuCard menuCard = menuCardsdata.get(position);
         holder.foodName.setText(menuCard.getFoodName());
         holder.foodType.setText(menuCard.food_type);
-        holder.foodCost.setText(menuCard.food_cost);
+        holder.foodCost.setText("Rs. "+menuCard.food_cost);
+        holder.quantity.setText("Qty : "+menuCard.quantity);
 
         holder.foodName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +83,8 @@ public class CartAdapter extends RecyclerView.Adapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, "Quantity Selected", Toast.LENGTH_SHORT).show();
+                listener.showNumberPicker(v,position,Integer.parseInt(menuCard.quantity));
+                //show_dialog();
             }
         });
 
@@ -75,6 +95,7 @@ public class CartAdapter extends RecyclerView.Adapter {
             public void onClick(View view) {
                 // display a toast with person name on item click
                 Toast.makeText(context, menuCard.food_name, Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -99,4 +120,12 @@ public class CartAdapter extends RecyclerView.Adapter {
             quantity = (TextView) itemView.findViewById(R.id.edit_quantity);
         }
     }
+
+
+    public void onValueChange(NumberPicker numberPicker, int i, int i1) {
+        Toast.makeText(context,
+                "selected number " + numberPicker.getValue(), Toast.LENGTH_SHORT).show();
+    }
+
+
 }

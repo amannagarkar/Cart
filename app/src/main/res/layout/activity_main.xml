@@ -21,7 +21,7 @@
             android:id="@+id/amount_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total"
+            android:text="Total : "
             android:textAlignment="center"
             android:textSize="20dp"
             android:layout_below="@+id/recycler_cart"
@@ -30,7 +30,7 @@
             />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_place_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

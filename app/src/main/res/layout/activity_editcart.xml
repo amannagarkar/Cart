@@ -1,32 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".editcart">
 
-    <TextView
+    <EditText
         android:id="@+id/edit_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textColor="@android:color/black"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="136dp" />
+        android:textSize="30sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"/>
 
     <Button
         android:id="@+id/subtract"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
         android:text="-"
         android:textSize="30dp"
-        app:layout_constraintEnd_toStartOf="@+id/edit_quantity"
-        tools:layout_editor_absoluteY="121dp" />
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="100dp"/>
 
     <Button
         android:id="@+id/add"
@@ -35,17 +33,39 @@
         android:layout_height="wrap_content"
         android:text="+"
         android:textSize="30dp"
-        tools:layout_editor_absoluteX="248dp"
-        tools:layout_editor_absoluteY="121dp" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="100dp"/>
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="0dp"
-        android:layout_height="61dp"
+        android:id="@+id/button_quantity_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Add Item to Cart"
         android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="672dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/edit_quantity" />
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/button_quantity_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/button_quantity_add" />
+
+    <NumberPicker
+        android:id="@+id/numberPicker"
+        android:layout_width="92dp"
+        android:layout_height="34dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/button_quantity_cancel"
+        android:layout_marginBottom="30dp"/>
+
+
+
+</RelativeLayout>
